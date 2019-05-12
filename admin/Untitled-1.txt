@@ -1,0 +1,45 @@
+<!-- <html> -->
+<!-- <body> -->
+<?php
+echo "go to Edit  course";
+echo "<a href='editcourse.php?id=".$schId."&school=".$schName."'>"."EDIT COURSE"."</a>";
+?>
+<!-- </body> -->
+<!-- </html> -->
+
+
+
+<?php
+ $target=$uploads.$imgName;
+ if (move_uploaded_file($_FILES["screenshot"]["tmp_name"],$target)){
+     $mysqli = new mysqli($dbhost, $dbuser, $dbpass, $db);
+     //$query="UPDATE school SET `schoolName`='$schName',`state`='$state',`schoolDesc`='$sdesc', `image`='$imgName', `date`=NOW() WHERE `schoolId`='$schId'";
+     $process=$mysqli->query($query) or die(mysqli_error());
+     echo "done";
+ }
+?>
+
+
+
+
+
+<?php
+ 
+ if (!empty($schName) && !empty($state) && !empty($sdesc) && !empty($imgName)){
+    $target=$uploads.$imgName;
+     if (move_uploaded_file($_FILES["screenshot"]["tmp_name"],$target)){
+    // $mysqli = new mysqli($dbhost, $dbuser, $dbpass, $db);
+    // $query="UPDATE school SET `schoolName`='$schName',`state`='$state',`schoolDesc`='$sdesc', `image`='$imgName', `date`=NOW() WHERE `schoolId`='$schId'";
+    // $process=$mysqli->query($query) or die(mysqli_error());
+     echo "YES";
+ }
+}
+?>
+<html>
+<body>
+<?php
+echo "go to Edit  course";
+echo "<a href='editcourse.php?id=".$schId."&school=".$schName."'>"."EDIT COURSE"."</a>";
+?>
+</body>
+</html>
